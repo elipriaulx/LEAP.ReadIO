@@ -39,23 +39,13 @@ namespace LEAP.ReadIO.Serialisable
         public AnprReadVehicleViewTypes VehicleView { get; set; }
 
         [JsonProperty]
-        public string PatchImageString
-        {
-            get { return PatchImageBytes != null ? Convert.ToBase64String(PatchImageBytes) : null; }
-            set { PatchImageBytes = value != null ? Convert.FromBase64String(value) : null; }
-        }
-        public byte[] PatchImageBytes { get; set; }
+        public string PatchImageString { get; set; }
 
         [JsonProperty]
         public RectangularPoint PatchSize { get; set; }
 
         [JsonProperty]
-        public string ResultImageString
-        {
-            get { return ResultImageBytes != null ? Convert.ToBase64String(ResultImageBytes) : null; }
-            set { ResultImageBytes = value != null ? Convert.FromBase64String(value) : null; }
-        }
-        public byte[] ResultImageBytes { get; set; }
+        public string ResultImageString { get; set; }
 
         [JsonProperty]
         public RectangularPoint ResultSize { get; set; }
@@ -67,12 +57,8 @@ namespace LEAP.ReadIO.Serialisable
         public RectangularQuadrilateral? ResultPatchArea { get; set; }
 
         [JsonProperty]
-        public string OverviewImageString
-        {
-            get { return OverviewImageBytes != null ? Convert.ToBase64String(OverviewImageBytes) : null; }
-            set { OverviewImageBytes = value != null ? Convert.FromBase64String(value) : null; }
-        }
-        public byte[] OverviewImageBytes { get; set; }
+        public List<string> OverviewImageStrings { get; set; }
+        IEnumerable<string> IAnprRead.OverviewImageStrings => OverviewImageStrings;
 
         [JsonProperty]
         public List<SerialisableAnprReadNote> Notes { get; set; }
